@@ -1,6 +1,36 @@
-<div>
-  <% posts.forEach(post => { %>
-    <h1><%= post.titulo %></h1>
-    <%# Isso é um comentário... %>
-  <% }) %>
+<div class="container mt-5">
+  <div class="row">
+      <% posts.forEach(post => { %>
+          <div class="col-md-12 mb-4">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= post.titulo %></h5>
+                      <p class="card-text"><%= post.conteudo %></p>
+                  </div>
+              </div>
+          </div>
+      <% }); %>
+  </div>
 </div>
+
+<style>
+  h1{
+    margin-left: 350px;
+  }
+  
+  .card:hover{
+    transform: scale(1.0);
+    transition: all 0.2s;
+    box-shadow: 5px 2px #00000080;
+    
+  }
+
+    .card{
+      
+    }
+
+    h5{
+      color: #ffc107;
+    }
+</style>
+

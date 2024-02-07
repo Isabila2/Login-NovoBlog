@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+        <% if(req.session.loggedin) { %>
+        <%- include('../partials/menu_dashboard'); %>
+        <% } %>        
+    </header>
+
+    <main>
+        <div class="box">
+        <%- include('../partials/posts'); %>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+    
+
+</body>
+
+<style>
+     .box{
+        width: 1000px;
+        border: 1px solid rgb(0, 0, 0);
+        margin-left: 50px;
+        border-radius: 50px;
+        margin-top: 10px;
+     }
+</style>
