@@ -78,7 +78,7 @@ app.get('/posts', (req, res) => {
         if (err) throw err;
             // res.send('Credenciais incorretas. <a href="/">Tente novamente</a>');
 
-    res.render('pages/pgposts', { req: req, posts: results })
+    res.render('pages/pgposts', { req: req, posts: results, totalPosts: results.length})
 });
 });
 
