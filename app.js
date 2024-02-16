@@ -154,6 +154,34 @@ app.post('/deletePost', (req, res) => {
     });
   });
 
+
+  app.get('/editar_posts/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM posts WHERE id=?', [id], (err, result) =>{
+        if (err) {
+            console.error('Erro ao recuperar post: ', err);
+            throw err;
+        }
+        res.render('pages/editar_posts', {req: req, post: result[0]});
+    });
+      
+    });
+
+    app.post('/editar_posts/:postid', (req, res) => {
+        const postid = req.params.postid;
+        const {titulo, conteudo} = req.body;
+
+        db.query('UPDATE posts SET titulo=?, conteudo=? WHERE id=?', [titulo, conteudo, postid], (err, result) => {
+            if (err) {
+                console.error('Erro ao atalizar post: ', err);
+                throw err;
+            }
+            res.redirect('/lista_posts');
+        });
+
+
+    });
+
   // Rota para excluir todos os posts
 app.post('/deleteAllPosts', (req, res) => {
     // Implemente a lógica para excluir todos os posts do banco de dados

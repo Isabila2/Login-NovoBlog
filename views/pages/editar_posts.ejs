@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header class="container">
+        <%- include('../partials/header'); %>
+        <% if(req.session.loggedin) { %>
+        <%- include('../partials/menu_dashboard'); %>
+        <% } %>
+
+    </header>
+    <main class="container">
+        <!-- <div class="jumbotron"></div> -->
+        <div class="container-sm border border-danger rounded-lg">
+            <div class="form-group">
+                <h3 style="text-align: center;">Cadastro de usuário</h3>
+                <form action="/editar_posts/<%= post.id %>" method="POST">
+                    <div class="form-group">
+                        <div><label for="titulo">Título da postagem</label></div>
+                        <div><textarea type="text" id="titulo" name="titulo" required class="form-control"><%=post.titulo%></textarea></div>
+                    </div>
+                    <div class="form-group">
+                        <div><label for="conteudo">Conteúdo da postagem</label></div>
+                        <div><textarea id="conteudo" name="conteudo" rows="4" cols="50"><%-post.conteudo%></textarea></div>
+                    </div>
+                    <!-- TODO: Implementar um campo para verificar na página se as senhas coincidem -->
+                    <div><button type="submit" class="form-control btn btn-dark">Editar postagem</button></div>
+                </form>
+            </div>
+        </div>
+        <div class="fixed-bottom"></div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+<style>
+    #conteudo{
+        width: 1047px;
+    }
+
+    #conteudo:hover{
+    transform: scale(1.0);
+    transition: all 0.2s;
+    }
+
+    #titulo:hover{
+    transform: scale(1.0);
+    transition: all 0.2s;
+    }
+</style>
+</html>
